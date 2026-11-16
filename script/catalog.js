@@ -116,7 +116,7 @@ function positionCount() {
     }
     else {
         cartBtn.innerHTML = `
-        <div class="nav__item_icon"><img src="/img/header/korxina.png" alt="korzina"></div>
+        <div class="nav__item_icon"><img src="img/header/korxina.png" alt="korzina"></div>
         <div class="nav__item_title"><a href="cart.html">Корзина</a></div>
         <div class="nav__cart__count">${position}</div>
         `
