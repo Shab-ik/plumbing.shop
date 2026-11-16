@@ -17,7 +17,7 @@
 
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(img/fon.jpg) 0 0/cover;
+    url('img/fon.jpg') 0 0/cover;
 }
 .color-dot {
   display: inline-block;
