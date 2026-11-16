@@ -1,0 +1,221 @@
+.back-btn {
+    position: relative;
+    padding: 15px 50px;
+    border-radius: 35px;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    background-color: rgba(128, 128, 128, 0.108);
+    border: 1px solid rgba(255, 255, 255, 0.077);
+}
+
+.back-btn a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.back-btn:hover {
+    background-color: rgba(128, 128, 128, 0.39);
+}
+
+.back-btn a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.order__info {
+    position: relative;
+    border-radius: 45px;
+    padding: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.077);
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(69, 54, 0, 0.593);
+    z-index: 6;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(193, 167, 0, 0.186);
+    margin-top: 50px;
+}
+.goods__count {
+    font-size: 30px;
+}
+.goods__buy {
+    width: 50%;
+}
+.goods__buy__button {
+    width: 60%;
+}
+.goods__buy__total {
+    font-weight: 700;
+    font-size: 25px;
+}
+.cart__counts {
+    padding: 20px 50px;
+}
+
+.cart__list {
+    margin: 10px auto 20px auto;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: up 1s forwards;
+    background-color: rgba(255, 254, 254, 0.044);
+    border: 1px solid rgba(255, 255, 255, 0.158);
+    backdrop-filter: blur(30px);
+    padding: 25px;
+    width: 70%;
+    margin: 10px auto 0 auto;
+    border-radius: 15px;
+    backdrop-filter: blur(50px);
+}
+
+.order__title {
+    margin: 20px;
+    color: white;
+}
+.order__subtitle {
+    margin: 10px 0;
+    color: white;
+}
+
+.order-item {
+    width: 40%;
+    margin: 20px 0px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(11, 10, 10, 0.49);
+    border: 1px solid rgba(255, 255, 255, 0.192);
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 10px;
+}
+.error-input { border: 1px solid red; }
+.reset-form {
+    background: none;
+    color: white;
+    opacity: 0.8;
+    border: none;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0px auto 20px auto;
+    text-decoration: underline;
+}
+
+#comment {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+}
+
+
+@media (max-width: 1000px) {
+    .order {
+        padding: 10px;
+        width: 90%;
+    }
+    .order-item {
+        width: 90%;
+        margin: 0;
+    }
+    .order__title {
+        font-size: 25px;
+    }
+    .order__subtitle {
+        font-size: 20px;
+    }
+    .order__info {
+        width: 100%;
+        padding: 5px;
+    }
+    .goods__count {
+        font-weight: 400;
+        font-size: 20px
+    }
+    .goods__buy__total {
+        margin: 0;
+        margin-left: 5px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .goods__buy__button {
+        font-size: 20px;
+        width: 100px;
+        padding: 0;
+        height: 90%;
+    }
+
+    
+
+
+
+    .cart__list {
+        padding: 5px;
+    }
+    .cart__item {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    .plus-button, .minus-button {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0;
+    }
+    .cart__counts {
+        display: block;
+        text-align: center;
+        align-content: center;
+        padding: 15px;
+    }
+    .cart-count {
+        font-size: 20px;
+        margin: 0 15px;
+    }
+    .cart__img {
+        min-width: 100px;
+    }
+    .cart__name {
+        font-size: 20px;
+    }
+    .cart__price {
+        font-size: 10px;
+
+    }
+    .cart__totalPrice {
+        font-size: 15px;
+    }
+    .cart__prices {
+        align-items: start;
+        text-wrap: nowrap;
+        flex: 1 1 auto;
+    }
+    .cart__name {
+        padding: 0;
+    }
+}

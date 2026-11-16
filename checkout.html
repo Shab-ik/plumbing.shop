@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout</title>
+    <link rel="stylesheet" href="/css/cart.css">
+
+    <link rel="stylesheet" href="/css/checkout.css">
+</head>
+
+<body>
+
+
+    <!---------------Шапка  -->
+    <div class="fon-blok">
+
+        <header>
+
+            <div class="header__flex">
+                <div class="header__logo">
+                    <div class="header__logo__blob"></div>
+                    <div class="header__logo__text">СантехМаг</div>
+                </div>
+
+
+                <div class="back-btn"><a href="cart.html">
+                        < Назад</a>
+                </div>
+
+
+        </header>
+
+
+
+
+        <form action="" class="order">
+
+            <h1 class="order__title">Оформление заказа</h1>
+            <div id="order__name" class="order-item">
+                <h2 class="order__subtitle">Имя</h2>
+                <input type="text" id="name" placeholder="Иван">
+                <div class="error" id="name-error"></div>
+            </div>
+            <div id="order__phone" class="order-item">
+                <h2 class="order__subtitle">Телефон</h2>
+                <input type="tel" id="phone" placeholder="+7-XXX-XXX-XX-XX">
+                <div class="error" id="phone-error"></div>
+            </div>
+            <div id="order__comment" class="order-item">
+                <h2 class="order__subtitle">Коментарий</h2>
+                <textarea name="comment" id="comment"></textarea>
+            </div>
+            <button type="reset" class="reset-form">Сбросить всё</button>
+            <div class="order__info">
+                <div class="goods__count">Товаров: 0</div>
+                <div class="goods__buy">
+                    <div class="goods__buy__total">17 600 руб.</div>
+                    <button type="button" class="goods__buy__button" id="submit-order">Заказать</button>
+                </div>
+            </div>
+            
+        </form>
+
+        <div class="cart__list">
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="script/animations.js"></script>
+        <script src="script/products.js"></script>
+        <script src="script/cart.js"></script>
+        <script src="script/checkout.js"></script>
+
+</body>
+
+</html>
