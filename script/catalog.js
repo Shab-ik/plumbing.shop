@@ -51,19 +51,19 @@ getUniqueProducts().forEach((product) => {
 
 
 function renderControls(product, card) {
-    // 1. узнать, сколько товара в корзине: getCart()[product.id] || 0
+
     const cartLength = getCart()[product.id] || 0
-    // 2. найти контейнер .controls внутри карточки этого товара
+
     const button = card.querySelector('.controls')
     if (!button) return;
-    // 3. если 0 → innerHTML = кнопка "Купить"
+
     if (cartLength <= 0) {
         button.innerHTML = `
         <button class="buy-btn">В корзину</button>
         `
 
     } else {
-        //    если > 0 → innerHTML = "− N +"
+
         button.innerHTML = `
     <button class="minus-button">-</button>
     <span class="cartLength">${cartLength}</span>
@@ -84,7 +84,7 @@ function renderControlsById(id, card) {
 
 function attachControlsHandler(container) {
     container.addEventListener("click", (event) => {
-        const id = container.dataset.currentVariant;   // актуальный вариант
+        const id = container.dataset.currentVariant;   
         if (!id) return;
 
         if (event.target.matches(".plus-button")) {
@@ -123,9 +123,9 @@ function positionCount() {
     }
 }
 
-// ── 1. Открывает страницу (СОЗДАЁТ элемент → анимация)
+
 function openProductPage(variants) {
-    // удалить старую, если была
+  
     const oldPage = document.querySelector('.cart-page');
     const oldDark = document.querySelector('.back-shadow');
     if (oldPage) oldPage.remove();
@@ -142,22 +142,22 @@ function openProductPage(variants) {
     body.prepend(cartPage);
     body.prepend(dark);
 
-    // один раз вешаем обработчик кнопок (он читает dataset.currentVariant)
+
     attachControlsHandler(cartPage);
 
-    // рисуем содержимое под первый вариант
+
     renderProductPage(variants[0], variants);
 }
 
-// ── 2. Только обновляет содержимое (элемент ТОТ ЖЕ → без анимации)
+
 function renderProductPage(variant, variants) {
     const cartPage = document.querySelector('.cart-page');
-    if (!cartPage) return;   // страница не открыта
+    if (!cartPage) return;   
 
-    // запоминаем текущий вариант — его читает attachControlsHandler
+    
     cartPage.dataset.currentVariant = variant.id;
 
-    // блок кнопок вариантов — только если вариантов больше 1
+
     let variantsHtml = '';
     if (variants.length > 1) {
         const variantName = variants[0].variantName;
@@ -200,7 +200,7 @@ function renderProductPage(variant, variants) {
 
     renderControls(variant, cartPage);
 
-    // клики по кнопкам вариантов — только обновить содержимое
+   
     cartPage.querySelectorAll('.variant-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
             const newVariant = variants.find((v) => v.id === btn.dataset.id);
@@ -218,17 +218,17 @@ catalogEl.addEventListener('click', (event) => {
 
         const variants = PRODUCTS.filter((p) => p.productId === cart.id);
         if (variants.length === 0) return;
-        openProductPage(variants);   // ← стало
+        openProductPage(variants);   
     }
 })
 
 
 body.addEventListener("click", (event) => {
-    // закрытие по кнопке
+  
     if (event.target.matches("#closeCartPage")) {
         closeProductPage();
     }
-    // закрытие по клику на тёмный фон
+    
     if (event.target.matches(".back-shadow")) {
         closeProductPage();
     }
@@ -323,27 +323,27 @@ positionCount()
 
 
 
-// ===== Открытие товара, если пришли по ссылке с главной =====
+
 function openProductFromHash() {
     const m = window.location.hash.match(/^#product-(.+)$/)
     if (!m) return
 
     const variantId = m[1]
 
-    // находим вариант по id (это id варианта, не productId)
+
     const variant = PRODUCTS.find(p => String(p.id) === String(variantId))
     if (!variant) {
         console.warn('Вариант не найден:', variantId)
         return
     }
 
-    // берём все варианты этой группы товаров
+ 
     const variants = PRODUCTS.filter(p => p.productId === variant.productId)
     if (variants.length === 0) return
 
     openProductPage(variants)
 }
 
-// вызываем после того, как все функции объявлены
+
 openProductFromHash()
 window.addEventListener('hashchange', openProductFromHash)
