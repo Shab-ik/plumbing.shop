@@ -1,24 +1,51 @@
 
 const logoElem = document.querySelector('.header__logo'); 
+const catalogEl = document.querySelector('.goods')
+const body = document.querySelector('body')
 
 function toggleClassByWidth() {
+
     if (window.innerWidth < 520) {
         logoElem.classList.add('logo__delete');
     } else {
         logoElem.classList.remove('logo__delete');
+        
     }
 }
 
-// Вызываем сразу при загрузке
-toggleClassByWidth();
+const korzinaBtn = document.createElement('div')
+body.prepend(korzinaBtn)
+function cartBtnByWidth() {
+    const position = Object.values(getCart()).reduce((s, n) => s + n, 0)
+    if (window.innerWidth < 1200) {
+        if (position <= 0) {
 
-// И при каждом изменении размера окна
+            korzinaBtn.classList.toggle('cart-btn-unvis')
+            
+        } 
+        else {
+            korzinaBtn.className = 'cart-btn-blok'
+            korzinaBtn.innerHTML = `
+            <div class="nav__item_icon"><img src="img/header/korxina.png" alt="korzina"></div>
+            <div class="nav__item_title"><a href="cart.html">Корзина</a></div>
+            <div class="nav__cart__count" id="cart-btn-count">${position}</div>
+            `
+        }
+
+    }
+}
+
+
+toggleClassByWidth();
+cartBtnByWidth()
+
+
+
 window.addEventListener('resize', toggleClassByWidth);
 
 
 
-const catalogEl = document.querySelector('.goods')
-const body = document.querySelector('body')
+
 
 
 
@@ -51,19 +78,19 @@ getUniqueProducts().forEach((product) => {
 
 
 function renderControls(product, card) {
-    // 1. узнать, сколько товара в корзине: getCart()[product.id] || 0
+    
     const cartLength = getCart()[product.id] || 0
-    // 2. найти контейнер .controls внутри карточки этого товара
+
     const button = card.querySelector('.controls')
     if (!button) return;
-    // 3. если 0 → innerHTML = кнопка "Купить"
+
     if (cartLength <= 0) {
         button.innerHTML = `
         <button class="buy-btn">В корзину</button>
         `
 
     } else {
-        //    если > 0 → innerHTML = "− N +"
+
         button.innerHTML = `
     <button class="minus-button">-</button>
     <span class="cartLength">${cartLength}</span>
@@ -84,22 +111,25 @@ function renderControlsById(id, card) {
 
 function attachControlsHandler(container) {
     container.addEventListener("click", (event) => {
-        const id = container.dataset.currentVariant;   // актуальный вариант
+        const id = container.dataset.currentVariant;   
         if (!id) return;
 
         if (event.target.matches(".plus-button")) {
             addToCart(id);
             renderControlsById(id, container);
+            cartBtnByWidth()
             positionCount();
         }
         if (event.target.matches(".minus-button")) {
             decreaseFromCart(id);
             renderControlsById(id, container);
+            cartBtnByWidth()
             positionCount();
         }
         if (event.target.matches(".buy-btn")) {
             addToCart(id);
             renderControlsById(id, container);
+            cartBtnByWidth()
             positionCount();
         }
     });
@@ -121,9 +151,10 @@ function positionCount() {
         <div class="nav__cart__count">${position}</div>
         `
     }
+
 }
 
-// ── 1. Открывает страницу (СОЗДАЁТ элемент → анимация)
+
 function openProductPage(variants) {
     // удалить старую, если была
     const oldPage = document.querySelector('.cart-page');
@@ -142,22 +173,21 @@ function openProductPage(variants) {
     body.prepend(cartPage);
     body.prepend(dark);
 
-    // один раз вешаем обработчик кнопок (он читает dataset.currentVariant)
     attachControlsHandler(cartPage);
 
     // рисуем содержимое под первый вариант
     renderProductPage(variants[0], variants);
 }
 
-// ── 2. Только обновляет содержимое (элемент ТОТ ЖЕ → без анимации)
+
 function renderProductPage(variant, variants) {
     const cartPage = document.querySelector('.cart-page');
     if (!cartPage) return;   // страница не открыта
 
-    // запоминаем текущий вариант — его читает attachControlsHandler
+
     cartPage.dataset.currentVariant = variant.id;
 
-    // блок кнопок вариантов — только если вариантов больше 1
+
     let variantsHtml = '';
     if (variants.length > 1) {
         const variantName = variants[0].variantName;
@@ -200,7 +230,7 @@ function renderProductPage(variant, variants) {
 
     renderControls(variant, cartPage);
 
-    // клики по кнопкам вариантов — только обновить содержимое
+
     cartPage.querySelectorAll('.variant-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
             const newVariant = variants.find((v) => v.id === btn.dataset.id);
@@ -218,7 +248,7 @@ catalogEl.addEventListener('click', (event) => {
 
         const variants = PRODUCTS.filter((p) => p.productId === cart.id);
         if (variants.length === 0) return;
-        openProductPage(variants);   // ← стало
+        openProductPage(variants);  
     }
 })
 
@@ -323,27 +353,26 @@ positionCount()
 
 
 
-// ===== Открытие товара, если пришли по ссылке с главной =====
+
 function openProductFromHash() {
     const m = window.location.hash.match(/^#product-(.+)$/)
     if (!m) return
 
     const variantId = m[1]
 
-    // находим вариант по id (это id варианта, не productId)
+
     const variant = PRODUCTS.find(p => String(p.id) === String(variantId))
     if (!variant) {
         console.warn('Вариант не найден:', variantId)
         return
     }
 
-    // берём все варианты этой группы товаров
     const variants = PRODUCTS.filter(p => p.productId === variant.productId)
     if (variants.length === 0) return
 
     openProductPage(variants)
 }
 
-// вызываем после того, как все функции объявлены
+
 openProductFromHash()
 window.addEventListener('hashchange', openProductFromHash)
