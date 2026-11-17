@@ -116,7 +116,7 @@ function positionCount() {
     }
     else {
         cartBtn.innerHTML = `
-        <div class="nav__item_icon"><img src="/img/header/korxina.png" alt="korzina"></div>
+        <div class="nav__item_icon"><img src="img/header/korxina.png" alt="korzina"></div>
         <div class="nav__item_title"><a href="cart.html">Корзина</a></div>
         <div class="nav__cart__count">${position}</div>
         `
@@ -323,3 +323,27 @@ positionCount()
 
 
 
+// ===== Открытие товара, если пришли по ссылке с главной =====
+function openProductFromHash() {
+    const m = window.location.hash.match(/^#product-(.+)$/)
+    if (!m) return
+
+    const variantId = m[1]
+
+    // находим вариант по id (это id варианта, не productId)
+    const variant = PRODUCTS.find(p => String(p.id) === String(variantId))
+    if (!variant) {
+        console.warn('Вариант не найден:', variantId)
+        return
+    }
+
+    // берём все варианты этой группы товаров
+    const variants = PRODUCTS.filter(p => p.productId === variant.productId)
+    if (variants.length === 0) return
+
+    openProductPage(variants)
+}
+
+// вызываем после того, как все функции объявлены
+openProductFromHash()
+window.addEventListener('hashchange', openProductFromHash)
