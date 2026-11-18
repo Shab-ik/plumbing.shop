@@ -1,57 +1,43 @@
-function getTheme() {
-    const raw = localStorage.getItem('theme');
-    return raw
-}
 
+function getTheme() {
+    return localStorage.getItem('theme');
+}
 
 function clearTheme() {
-    localStorage.removeItem("theme");
+    localStorage.removeItem('theme');
 }
-
-
 
 function setLightTheme() {
-    clearTheme()
-    localStorage.setItem('theme', 'light')
+    localStorage.setItem('theme', 'light');
 }
+
 function setDarkTheme() {
-    clearTheme()
-    localStorage.setItem('theme', 'dark')
+    localStorage.setItem('theme', 'dark');
+}
+
+const lightButton = document.querySelector('#light');
+const darkButton = document.querySelector('#dark');
+
+
+
+function applyTheme() {
+    const isLight = getTheme() === 'light';
+
+    document.documentElement.classList.toggle('light-theme', isLight);
+
 }
 
 
-
-const lightButton = document.querySelector('#light')
-const darkButton = document.querySelector('#dark')
-
-
-lightButton.addEventListener('click', event => {
-    if (getTheme() === 'dark') {
-        setLightTheme()
-        location.reload();
-    }
-
-})
-darkButton.addEventListener('click', event => {
-    if (getTheme() === 'light') {
-        setDarkTheme()
-        location.reload()
-    }
-
-})
-
-const head = document.querySelector('head')
-const themeLink = document.createElement('link')
-themeLink.setAttribute('rel', 'stylesheet')
-themeLink.setAttribute('href', 'css/lightTheme.css')
-themeLink.className = 'lightTheme'
+lightButton.addEventListener('click', () => {
+    setLightTheme();
+    applyTheme();
+});
 
 
-if (getTheme() === 'light') {
-    head.append(themeLink)
+darkButton.addEventListener('click', () => {
+    setDarkTheme();
+    applyTheme();
+});
 
-}
-else if (getTheme() === 'dark') {
-    themeLink.remove()
 
-}
+applyTheme();
