@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme');
+        }
+    </script>
     <title>Каталог</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/catalog.css">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/lightTheme.css">
 
 </head>
 
@@ -35,7 +43,7 @@
             <div class="menu__item">
                 <div class="menu__item_icon"><img src="img/header/korxina.png" alt="korzina"></div>
                 <div class="menu__item_title"><a href="cart.html">Корзина</a></div>
-                
+
             </div>
         </div>
     </div>
@@ -46,6 +54,10 @@
             <div class="header__logo">
                 <div class="header__logo__blob"></div>
                 <div class="header__logo__text">СантехМаг</div>
+                <div class="theme">
+                    <div class="theme__button" id="light"><img src="img/theme/light.png" alt=""></div>
+                    <div class="theme__button" id="dark"><img src="img/theme/dark.png" alt=""></div>
+                </div>
             </div>
 
             <div class="search__blok">
@@ -96,6 +108,8 @@
     <script src="script/catalog.js"></script>
     <script src="script/animations.js"></script>
     <script src="script/search.js"></script>
+    <script src="script/setTheme.js"></script>
+
 
 </body>
 

@@ -484,10 +484,6 @@ header {
         display: block;
     }
 
-    .fon-blok {
-        background: url(/img/fon.jpg) -1050px 0;
-
-    }
 
     .kran__blok {
         display: none;

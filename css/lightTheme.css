@@ -1,0 +1,207 @@
+html.light-theme {
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+            url('../img/fonlight.png') 0 0/cover;
+    }
+
+    .header__logo {
+        background-color: rgba(240, 248, 255, 0.635);
+        border: 1px solid white;
+    }
+
+    .header__logo__blob {
+        background-color: rgb(0, 140, 255);
+        -webkit-box-shadow: 0 0 20px rgba(0, 166, 255, 0.514);
+        box-shadow: 0 0 20px rgba(0, 136, 255, 0.862);
+        filter: blur(30px);
+        width: 50px;
+
+    }
+
+    .search__blok {
+        background-color: rgba(30, 143, 255, 0.557);
+    }
+
+    .search__input {
+        background-color: rgba(255, 255, 255, 0.661);
+        color: black;
+    }
+
+    .header__logo__text {
+        color: black;
+    }
+
+    .nav {
+        background-color: rgba(240, 248, 255, 0.635);
+        backdrop-filter: blur(20px);
+
+    }
+
+
+    .nav__item:hover {
+        background-color: rgba(30, 143, 255, 0.622);
+    }
+
+    .nav__item_open {
+        opacity: 0.3;
+        background-color: dodgerblue;
+    }
+
+    .nav__item_open:hover {
+        opacity: 0.3;
+    }
+
+    .theme {
+        background-color: #1e90ff;
+    }
+
+    #light {
+        background-color: rgba(0, 0, 0, 0.476);
+    }
+
+    #dark {
+        background: none;
+    }
+
+    #dark:hover {
+        background-color: rgba(0, 0, 0, 0.476);
+    }
+
+
+    .user__name,
+    .user__count,
+    .info__title,
+    .info__subtitle,
+    .info__counts,
+    .info__status__title,
+    .info__btn,
+    .info__btn_ready,
+    .info__btn_order a,
+    .usble__title,
+    .goods__buy__total {
+        color: black;
+    }
+
+    .info {
+        background-color: rgba(240, 248, 255, 0.334);
+        backdrop-filter: blur(30px);
+    }
+
+    .info__blob,
+    .info__blob1 {
+        background-color: dodgerblue;
+        box-shadow: 0 0 40px dodgerblue;
+        filter: blur(40px);
+    }
+
+    .info__item {
+        background-color: rgba(30, 143, 255, 0.706);
+        backdrop-filter: blur(100px);
+        border: 1px solid rgba(255, 255, 255, 0.304);
+    }
+
+    .goods__karta {
+        background-color: rgba(30, 143, 255, 0.346);
+        backdrop-filter: blur(500px);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.423);
+    }
+
+    .open-btn {
+        background-color: rgba(255, 255, 255, 0.698);
+        color: black;
+    }
+
+    .cart-page {
+        background-color: rgba(255, 255, 255, 0.228);
+    }
+
+    #closeCartPage,
+    .back-btn {
+        background-color: rgba(30, 143, 255, 0.358);
+    }
+
+    #closeCartPage:hover,
+    .back-btn:hover {
+        background-color: dodgerblue;
+    }
+
+    .image-blok {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.405);
+    }
+
+    .img1 {
+        background-color: rgba(30, 143, 255, 0.358);
+    }
+
+    .minus-button,
+    .plus-button {
+        background-color: rgba(30, 143, 255, 0.358);
+    }
+
+    .minus-button:hover,
+    .plus-button:hover {
+        background-color: dodgerblue;
+    }
+
+
+
+    .nav__cart__count {
+        background-color: dodgerblue;
+    }
+
+
+    .goods__blob {
+        box-shadow: 0 0 20px white;
+        background-color: white;
+    }
+
+    .goods__blob1 {
+        box-shadow: 0 0 20px dodgerblue;
+        background-color: dodgerblue;
+    }
+
+    .shadow {
+        background-color: rgba(16, 102, 177, 0.482);
+        box-shadow: 0 0 10px white;
+    }
+
+    .cart__item,
+    .clear-btn {
+        background-color: rgba(0, 0, 0, 0.317);
+    }
+
+    .cart__img {
+        background-color: rgba(30, 143, 255, 0.367);
+    }
+
+    .goods__buy {
+        background-color: rgba(255, 255, 255, 0.555);
+    }
+
+    .goods__buy__button {
+        background-color: rgba(30, 143, 255, 0.316);
+    }
+
+    .goods__buy__button:hover {
+        background-color: #1e90ff;
+    }
+
+
+    .order {
+        backdrop-filter: blur(100px);
+    }
+
+    .order__info {
+        background: linear-gradient(90deg, rgba(30, 144, 255, 1) 0%,
+                rgba(255, 255, 255, 1) 100%);
+    }
+
+    .cart-btn-blok {
+        background-color: rgba(30, 143, 255, 0.486);
+        border: 1px solid white;
+    }
+
+    .menu__blok {
+        background-color: dodgerblue;
+    }
+}

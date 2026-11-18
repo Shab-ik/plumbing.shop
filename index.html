@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme');
+        }
+    </script>
     <title>Магазин Сантехники</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +17,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/lightTheme.css">
+
 </head>
 
 <body>
@@ -48,6 +55,10 @@
                 <div class="header__logo">
                     <div class="header__logo__blob"></div>
                     <div class="header__logo__text">СантехМаг</div>
+                    <div class="theme">
+                        <div class="theme__button" id="light"><img src="img/theme/light.png" alt=""></div>
+                        <div class="theme__button" id="dark"><img src="img/theme/dark.png" alt=""></div>
+                    </div>
                 </div>
                 <div class="search__blok">
                     <div class="search__img__div"><img src="img/header/loupe.png" alt="" class="search__logo"></div>
@@ -156,6 +167,7 @@
     <script src="script/menu.js"></script>
     <script src="script/home.js"></script>
     <script src="script/animations.js"></script>
+    <script src="script/setThemeHome.js"></script>
 </body>
 
 </html>

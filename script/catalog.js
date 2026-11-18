@@ -156,7 +156,7 @@ function positionCount() {
 
 
 function openProductPage(variants) {
-  
+    // удалить старую, если была
     const oldPage = document.querySelector('.cart-page');
     const oldDark = document.querySelector('.back-shadow');
     if (oldPage) oldPage.remove();
@@ -175,14 +175,15 @@ function openProductPage(variants) {
 
     attachControlsHandler(cartPage);
 
-
+    // рисуем содержимое под первый вариант
     renderProductPage(variants[0], variants);
 }
 
 
 function renderProductPage(variant, variants) {
     const cartPage = document.querySelector('.cart-page');
-    if (!cartPage) return;   
+    if (!cartPage) return;   // страница не открыта
+
 
     cartPage.dataset.currentVariant = variant.id;
 
@@ -229,6 +230,7 @@ function renderProductPage(variant, variants) {
 
     renderControls(variant, cartPage);
 
+
     cartPage.querySelectorAll('.variant-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
             const newVariant = variants.find((v) => v.id === btn.dataset.id);
@@ -252,11 +254,11 @@ catalogEl.addEventListener('click', (event) => {
 
 
 body.addEventListener("click", (event) => {
-  
+    // закрытие по кнопке
     if (event.target.matches("#closeCartPage")) {
         closeProductPage();
     }
-    
+    // закрытие по клику на тёмный фон
     if (event.target.matches(".back-shadow")) {
         closeProductPage();
     }

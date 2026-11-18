@@ -94,14 +94,42 @@ header {
 .header__logo {
   overflow: hidden;
   position: relative;
-  padding: 15px;
+  padding: 5px;
   border-radius: 35px;
   -ms-flex-line-pack: center;
   align-content: center;
   background-color: rgba(128, 128, 128, 0.108);
   height: 100%;
   border: 1px solid rgba(255, 255, 255, 0.077);
+  display: flex;
+  align-items: center;
 }
+
+.theme {
+  display: flex;
+  align-items: center;
+  background-color: rgba(67, 53, 0, 0.595);
+  border-radius: 35px;
+  width: 100%;
+  height: 50px;
+  margin-left: 10px;
+  padding: 1px;
+}
+.theme__button {
+  padding: 5px;
+  align-content: center;
+  border-radius: 35px;
+  height: 100%;
+}
+#dark {
+  background-color: rgba(0, 0, 0, 0.476);
+  
+}
+#light:hover {
+  background-color: rgba(0, 0, 0, 0.476);
+}
+
+
 
 .header__logo__blob {
   width: 50px;
@@ -233,6 +261,8 @@ header {
   min-height: 60px;
   background-color: rgba(128, 128, 128, 0.139);
   border: 1px solid rgba(255, 255, 255, 0.077);
+  margin: 0 10px;
+
 }
 
 .search__img__div {

@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-theme');
+        }
+    </script>
     <title>checkout</title>
     <link rel="stylesheet" href="css/cart.css">
-
     <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="css/lightTheme.css">
+
 </head>
 
 <body>
@@ -60,11 +66,11 @@
                     <button type="button" class="goods__buy__button" id="submit-order">Заказать</button>
                 </div>
             </div>
-            
+
         </form>
 
         <div class="cart__list">
-            
+
         </div>
 
 
@@ -84,6 +90,7 @@
         <script src="script/products.js"></script>
         <script src="script/cart.js"></script>
         <script src="script/checkout.js"></script>
+        <script src="script/theme.js"></script>
 
 </body>
 
