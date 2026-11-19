@@ -1,12 +1,19 @@
 html.light-theme {
     body {
-        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
             url('../img/fonlight.png') 0 0/cover;
     }
 
     .header__logo {
         background-color: rgba(240, 248, 255, 0.635);
-        border: 1px solid white;
+
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.347);
+    }
+
+    .header__menu {
+        background-color: rgba(0, 128, 255, 0.456);
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.476);
     }
 
     .header__logo__blob {
@@ -20,6 +27,7 @@ html.light-theme {
 
     .search__blok {
         background-color: rgba(30, 143, 255, 0.557);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.347);
     }
 
     .search__input {
@@ -32,9 +40,9 @@ html.light-theme {
     }
 
     .nav {
-        background-color: rgba(240, 248, 255, 0.635);
-        backdrop-filter: blur(20px);
-
+        background-color: rgba(255, 255, 255, 0.294);
+        backdrop-filter: blur(200px); 
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.347);
     }
 
 
@@ -68,6 +76,7 @@ html.light-theme {
     }
 
 
+    .usble__title,
     .user__name,
     .user__count,
     .info__title,
@@ -77,14 +86,19 @@ html.light-theme {
     .info__btn,
     .info__btn_ready,
     .info__btn_order a,
-    .usble__title,
     .goods__buy__total {
         color: black;
+    }
+
+    .user__logo {
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.616);
     }
 
     .info {
         background-color: rgba(240, 248, 255, 0.334);
         backdrop-filter: blur(30px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.347);
+
     }
 
     .info__blob,
@@ -95,9 +109,18 @@ html.light-theme {
     }
 
     .info__item {
-        background-color: rgba(30, 143, 255, 0.706);
-        backdrop-filter: blur(100px);
-        border: 1px solid rgba(255, 255, 255, 0.304);
+        background-color: rgba(30, 143, 255, 0.103);
+        backdrop-filter: blur(200px);
+        border: 1px solid rgba(0, 0, 0, 0.304);
+    }
+
+    .info__item-btn {
+        background-color: #1e8fff3d;
+        transition-duration: 0.2s;
+    }
+
+    .info__item-btn:hover {
+        background-color: #1e8fffa2;
     }
 
     .goods__karta {
@@ -115,8 +138,7 @@ html.light-theme {
         background-color: rgba(255, 255, 255, 0.228);
     }
 
-    #closeCartPage,
-    .back-btn {
+    #closeCartPage {
         background-color: rgba(30, 143, 255, 0.358);
     }
 
@@ -149,6 +171,12 @@ html.light-theme {
         background-color: dodgerblue;
     }
 
+    .goods__karta {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.347);
+    }
+    .goods__image {
+        background-color: rgba(255, 255, 255, 0.63);
+    }
 
     .goods__blob {
         box-shadow: 0 0 20px white;
@@ -179,16 +207,31 @@ html.light-theme {
     }
 
     .goods__buy__button {
-        background-color: rgba(30, 143, 255, 0.316);
-    }
-
-    .goods__buy__button:hover {
+        
         background-color: #1e90ff;
     }
 
+    .goods__buy__button:hover {
+        background-color: rgba(30, 143, 255, 0.316);
+    }
+
+    .search__not-found {
+        color: black;
+    }
 
     .order {
         backdrop-filter: blur(100px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.434);
+    }
+
+    .back-btn {
+        background-color: rgba(255, 255, 255, 0.696);
+    }
+    .back-btn:hover {
+        background-color: white;
+    }
+    .back-btn a {
+        color: black;
     }
 
     .order__info {
@@ -203,5 +246,10 @@ html.light-theme {
 
     .menu__blok {
         background-color: dodgerblue;
+    }
+
+    .header__home {
+        background-color: #1e8fff7c;
+        border: 1px solid rgba(255, 255, 255, 0.376);
     }
 }

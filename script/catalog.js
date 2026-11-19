@@ -2,13 +2,21 @@
 const logoElem = document.querySelector('.header__logo'); 
 const catalogEl = document.querySelector('.goods')
 const body = document.querySelector('body')
+const btnHome = document.querySelector('.header__home')
+
+
+btnHome.addEventListener('click', () => {
+    window.location.href = 'index.html'
+})
 
 function toggleClassByWidth() {
 
     if (window.innerWidth < 520) {
         logoElem.classList.add('logo__delete');
+        btnHome.classList.remove('logo__delete');
     } else {
         logoElem.classList.remove('logo__delete');
+        btnHome.classList.add('logo__delete');
         
     }
 }
@@ -156,7 +164,7 @@ function positionCount() {
 
 
 function openProductPage(variants) {
-    // удалить старую, если была
+
     const oldPage = document.querySelector('.cart-page');
     const oldDark = document.querySelector('.back-shadow');
     if (oldPage) oldPage.remove();
@@ -175,14 +183,14 @@ function openProductPage(variants) {
 
     attachControlsHandler(cartPage);
 
-    // рисуем содержимое под первый вариант
+
     renderProductPage(variants[0], variants);
 }
 
 
 function renderProductPage(variant, variants) {
     const cartPage = document.querySelector('.cart-page');
-    if (!cartPage) return;   // страница не открыта
+    if (!cartPage) return;   
 
 
     cartPage.dataset.currentVariant = variant.id;
@@ -254,11 +262,11 @@ catalogEl.addEventListener('click', (event) => {
 
 
 body.addEventListener("click", (event) => {
-    // закрытие по кнопке
+
     if (event.target.matches("#closeCartPage")) {
         closeProductPage();
     }
-    // закрытие по клику на тёмный фон
+
     if (event.target.matches(".back-shadow")) {
         closeProductPage();
     }
