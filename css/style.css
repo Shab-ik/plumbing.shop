@@ -471,6 +471,7 @@ header {
 }
 .info__status__title {
   color: white;
+  text-wrap: nowrap;
 }
 
 .info__status__blob {
