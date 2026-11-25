@@ -20,6 +20,69 @@ body {
     url('../img/fon.jpg') 0 0/cover;
 }
 
+
+
+
+
+
+.back-dark {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+}
+.remove-warning {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: rgba(139, 97, 0, 0.096);
+    backdrop-filter: blur(80px);
+    border: 1px solid rgba(255, 255, 255, 0.397);
+    z-index: 10;
+}
+.warning-title {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 60px;
+}
+.warning-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.warning-btn {
+    background-color: rgba(0, 0, 0, 0.431);
+    color: white;
+    font-size: 30px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.357);
+    border-radius: 30px;
+}
+.warning-btn:hover {
+    opacity: 0.5;
+}
+#warning-yes {
+    background-color: rgba(139, 97, 0, 0.238);
+}
+
+
+
+
+
 header {
     position: relative;
     /* animation: down 1s; */
@@ -520,7 +583,9 @@ header {
         flex-basis: 20%;
     }
 
-
+    .remove-warning {
+        width: 90%;
+    }
     
     .cart__counts {
         height: 100px;

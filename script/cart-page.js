@@ -3,6 +3,7 @@ const cartEl = document.querySelector('.cart__list');
 const totalEl = document.querySelector('.goods__buy__total');
 const orderEl = document.querySelector('.goods__buy__button');
 const countEl = document.querySelector('.goods__count');
+const bodyEl = document.querySelector('body')
 
 
 
@@ -76,13 +77,13 @@ function renderCart() {
 
 cartEl.addEventListener("click", (event) => {
 
-    if (event.target.matches('.clear-btn')) {
-        if (confirm("Точно очистить корзину?")) {
-            clearCart();
-            renderCart();
-        }
-        return;   
-    }
+    // if (event.target.matches('.clear-btn')) {
+    //     if (confirm("Точно очистить корзину?")) {
+    //         clearCart();
+    //         renderCart();
+    //     }
+    //     return;   
+    // }
 
 
     const card = event.target.closest(".cart__item");
@@ -101,6 +102,45 @@ cartEl.addEventListener("click", (event) => {
 });
 
 
+
+const removeWarning = document.createElement('div')
+removeWarning.className = 'remove-warning'
+removeWarning.innerHTML = `
+    <div class="warning-title">Вы уверены что хотите очистить корзину?</div>
+    <div class="warning-btns">
+        <button class="warning-btn" id="warning-no">Нет</button>
+        <button class="warning-btn" id="warning-yes">Да</button>
+    </div>
+    `
+const backDark = document.createElement('div')
+backDark.className = 'back-dark'
+
+document.addEventListener('click', event => {
+    const clearBtn = event.target.closest('.clear-btn')
+
+    if (!clearBtn) return;
+
+    
+    bodyEl.prepend(removeWarning)
+    bodyEl.prepend(backDark)
+
+})
+
+document.addEventListener('click', event => {
+    const yesBtn = event.target.closest('#warning-yes')
+    const noBtn = event.target.closest('#warning-no')
+
+    if (noBtn) {
+        backDark.remove()
+        removeWarning.remove()
+    }
+    if (yesBtn) {
+        clearCart()
+        renderCart()
+        backDark.remove()
+        removeWarning.remove()
+    }
+})
 
 
 renderCart()

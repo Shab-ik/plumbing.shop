@@ -263,4 +263,8 @@ html.light-theme {
     .go-home, .thank {
         color: black;
     }
+
+    #warning-yes {
+        background-color: #1e8fff77;
+    }
 }

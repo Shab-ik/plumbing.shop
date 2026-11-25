@@ -22,10 +22,15 @@ function renderOrders() {
 
     infoElement.innerHTML = visibleOrders.map(order => `
         <div class="info__item">
-            <div class="info__subtitle info__subtitle_live">${order.id}</div>
+            <div class="info__subtitle info__subtitle_live">
+                ${new Date(order.date).toLocaleDateString("ru-RU", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "2-digit"
+                })}
+            </div>
             <div class="info__status">
                 <div class="info__status__blob"></div>
-                <div class="info__status__title">${new Date(order.date).toLocaleDateString("ru-RU")}</div>
                 <div class="info__status__title">Товаров: ${order.items.length}</div>
             </div>
             <button class="info__btn">Посмотреть</button>

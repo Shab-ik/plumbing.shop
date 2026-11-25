@@ -1,5 +1,8 @@
+
+
 const orderList = document.querySelector('.orders')
 const orderTit = document.querySelector('.order-title__remove')
+const bodyEl = document.querySelector('body')
 
 function renderOrders() {
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -20,10 +23,10 @@ function renderOrders() {
             <div class="order-card">
 
                 <div class="order-blok">
-                    <div class="order-title">Заказ ${order.id}
+                    <div class="order-title">Заказ № ${order.id}
                         <p class="order-date">${new Date(order.date).toLocaleString("ru-RU", {
-                        day: "2-digit", month: "2-digit", year: "numeric",
-                        hour: "2-digit", minute: "2-digit"
+                            day: "2-digit", month: "2-digit", year: "numeric",
+                            hour: "2-digit", minute: "2-digit"
                         })}
                         </p>
                     </div>
@@ -47,19 +50,45 @@ function renderOrders() {
             </div>
         `).join("");
 }
-
+const removeWarning = document.createElement('div')
+removeWarning.className = 'remove-warning'
+removeWarning.innerHTML = `
+    <div class="warning-title">Вы уверены что хотите удалить все заказы?</div>
+    <div class="warning-btns">
+        <button class="warning-btn" id="warning-no">Нет</button>
+        <button class="warning-btn" id="warning-yes">Да</button>
+    </div>
+    `
+const backDark = document.createElement('div')
+backDark.className = 'back-dark'
 
 document.addEventListener('click', event => {
     const removeBtn = event.target.closest('.remove-orders')
 
     if (!removeBtn) return;
 
-    const removeWarning = confirm('Вы точно хотите удалить все заказы?')
-    if (removeWarning) {
+    
+    bodyEl.prepend(removeWarning)
+    bodyEl.prepend(backDark)
+
+
+
+})
+
+document.addEventListener('click', event => {
+    const yesBtn = event.target.closest('#warning-yes')
+    const noBtn = event.target.closest('#warning-no')
+
+    if (noBtn) {
+        backDark.remove()
+        removeWarning.remove()
+    }
+    if (yesBtn) {
         localStorage.removeItem('orders')
+        backDark.remove()
+        removeWarning.remove()
         renderOrders()
     }
-
 })
 
 renderOrders()

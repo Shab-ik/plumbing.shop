@@ -90,6 +90,20 @@ function shortId(length = 4) {
     return id;
 }
 
+const removeWarning = document.createElement('div')
+removeWarning.className = 'remove-warning'
+removeWarning.innerHTML = `
+    <div class="warning-title">Подтвердите заказ</div>
+    <div class="warning-btns">
+        <button class="warning-btn" id="warning-no">Отмена</button>
+        <button class="warning-btn" id="warning-yes">Подтвердить</button>
+    </div>
+    `
+const backDark = document.createElement('div')
+backDark.className = 'back-dark'
+const cart = getCartItems();
+
+
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -131,18 +145,38 @@ submitBtn.addEventListener("click", (event) => {
         return;
     }
 
-    // --- оформление заказа ---
-    const cart = getCartItems();
-
     if (!cart.length) {
 
         document.querySelector("#phone-error").textContent = "Корзина пуста";
         return;
     }
 
-    const orderConf = confirm('Вы уверены что хотите заказать?')
 
-    if (orderConf) {
+
+
+    bodyEl.prepend(removeWarning)
+    bodyEl.prepend(backDark)
+
+
+
+});
+
+
+
+document.addEventListener('click', event => {
+    const yesBtn = event.target.closest('#warning-yes')
+    const noBtn = event.target.closest('#warning-no')
+
+    if (noBtn) {
+        backDark.remove()
+        removeWarning.remove()
+    }
+    if (yesBtn) {
+
+        backDark.remove()
+        removeWarning.remove()
+
+        // --- оформление заказа ---
         const orders = JSON.parse(localStorage.getItem("orders")) || [];
 
         let id;
@@ -175,7 +209,7 @@ submitBtn.addEventListener("click", (event) => {
         clearCart()
 
 
-        
+
         bodyEl.innerHTML = `
         <div class="thank-blok">
             <div class="thank">Спасибо за заказ!</div>
@@ -183,8 +217,10 @@ submitBtn.addEventListener("click", (event) => {
         </div>
         `
 
+
+
+
+
     }
-
-
-});
+})
 
