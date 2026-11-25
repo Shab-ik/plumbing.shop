@@ -1,4 +1,3 @@
-
 const cartEl = document.querySelector('.cart__list');
 const totalEl = document.querySelector('.goods__buy__total');
 const countEl = document.querySelector('.goods__count');
@@ -6,6 +5,7 @@ const orderEl = document.querySelector('.order')
 const nameEl = document.querySelector('#name')
 const phoneEl = document.querySelector('#phone')
 const submitBtn = document.querySelector("#submit-order");
+const bodyEl = document.querySelector('body')
 
 
 
@@ -64,11 +64,37 @@ function renderCart() {
 renderCart()
 
 
+nameEl.addEventListener('input', (event) => {
+    event.target.value = event.target.value.replace(/[^а-яА-ЯёЁa-zA-Z\s]/g, '');
+});
+phoneEl.addEventListener('input', () => {
+
+    let v = phoneEl.value.replace(/[^0-9+]/g, '');
+
+    const hasPlus = v.startsWith('+');
+    v = v.replace(/\+/g, '');
+    v = (hasPlus ? '+' : '') + v;
+
+    if (v.length > 12) v = v.slice(0, 11);
+
+    phoneEl.value = v;
+});
+
+
+function shortId(length = 4) {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let id = '';
+    for (let i = 0; i < length; i++) {
+        id += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return id;
+}
 
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
     const name = nameEl.value.trim();
+
     const phone = phoneEl.value.trim();
     nameEl.classList.remove("error-input");
     phoneEl.classList.remove("error-input");
@@ -86,7 +112,79 @@ submitBtn.addEventListener("click", (event) => {
         document.querySelector("#phone-error").textContent = "Введите телефон";
         return;
     }
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 11) {
+        phoneEl.classList.add('error-input')
+        document.querySelector("#phone-error").textContent = "Неправильный номер";
+        return;
+    }
+
+    if (name.replace(/\s/g, '').length < 3) {
+        nameEl.classList.add('error-input')
+        document.querySelector("#name-error").textContent = "Имя не может быть меньше трёх символов";
+        return;
+    }
+
+    if (/[a-zA-Z]/.test(name)) {
+        nameEl.classList.add('error-input')
+        document.querySelector("#name-error").textContent = "Имя должно быть на русском";
+        return;
+    }
+
+    // --- оформление заказа ---
+    const cart = getCartItems();
+
+    if (!cart.length) {
+
+        document.querySelector("#phone-error").textContent = "Корзина пуста";
+        return;
+    }
+
+    const orderConf = confirm('Вы уверены что хотите заказать?')
+
+    if (orderConf) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        let id;
+        do {
+            id = shortId(4);
+        } while (orders.some(o => o.id === id));
+
+        const items = cart.map(({ product, qty }) => ({
+            id: product.id,
+            name: product.name,
+            variantLabel: product.variantLabel || null,
+            price: product.price,
+            qty,
+            sum: product.price * qty
+        }));
+
+        const total = items.reduce((s, i) => s + i.sum, 0);
+
+        orders.push({
+            id,
+            date: new Date().toISOString(),
+            customer: { name, phone },
+            items,
+            total
+        });
+
+        localStorage.setItem("orders", JSON.stringify(orders));
 
 
-    console.log("Валидация прошла:", name, phone);
+        clearCart()
+
+
+        
+        bodyEl.innerHTML = `
+        <div class="thank-blok">
+            <div class="thank">Спасибо за заказ!</div>
+            <a href="index.html" class="go-home">На главную</a>
+        </div>
+        `
+
+    }
+
+
 });
+

@@ -27,5 +27,5 @@ function decreaseFromCart(id) {
 }
 
 function clearCart() {
-  localStorage.removeItem("cart");
+    localStorage.removeItem("cart");
 }

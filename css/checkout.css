@@ -1,3 +1,25 @@
+.thank-blok {
+    background-color: rgba(118, 100, 0, 0.133);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.382);
+    width: 60%;
+    margin: 20vh auto;
+    padding: 40px;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+.go-home {
+    display: block;
+    color: white;
+    margin-top: 30px;
+}
+.go-home:hover {
+    opacity: 0.5;
+}
+
+
+
 .back-btn {
     position: relative;
     padding: 15px 50px;
@@ -217,5 +239,14 @@ textarea {
     }
     .cart__name {
         padding: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .thank {
+        font-size: 30px;
+    }
+    .go-home {
+        font-size: 20px;
     }
 }

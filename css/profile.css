@@ -1,0 +1,163 @@
+.order-title__remove {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.remove-orders {
+    background-color: rgba(136, 116, 0, 0.28);
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 45px;
+    color: white;
+
+}
+
+.orders-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.order-card {
+    color: white;
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.142);
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 20px;
+    opacity: 0;
+    animation: up 1s forwards;
+}
+
+.not-orders {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.not-orders a {
+    color: white;
+}
+.not-orders a:hover {
+    opacity: 0.5;
+}
+
+.order-blok {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.393);
+    border-radius: 10px;
+}
+
+.order-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    background-color: rgba(255, 255, 255, 0.142);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.308);
+    border-radius: 10px;
+}
+
+.order-date {
+    font-size: 25px;
+    opacity: 0.5;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    padding: 20px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.308);
+    border-radius: 10px;
+}
+
+.order-product {
+    flex: 1 1 auto;
+}
+
+.order-info {
+    padding: 0 20px;
+    margin-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.218);
+}
+
+.order-price {
+    font-size: 15px;
+    opacity: 0.5;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    background-color: rgba(55, 55, 55, 0.142);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.308);
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+@keyframes up {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 780px) {
+    .orders-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 520px) {
+    .orders-container {
+        width: 95%;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .remove-orders {
+        font-size: 15px;
+    }
+    .order-title {
+        font-size: 25px
+    }
+    .order-date {
+        font-size: 15px;
+    }
+    .order-product {
+        font-size: 20px;
+    }
+    .order-info {
+        font-size: 15px
+    }
+    .order-price {
+        font-size: 10px;
+    }
+    .order-total {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+}

@@ -81,7 +81,7 @@ cartEl.addEventListener("click", (event) => {
             clearCart();
             renderCart();
         }
-        return;   // дальше не идём, это не карточка
+        return;   
     }
 
 

@@ -252,4 +252,15 @@ html.light-theme {
         background-color: #1e8fff7c;
         border: 1px solid rgba(255, 255, 255, 0.376);
     }
+
+    .order-card {
+        background-color: #1e8fff78;
+    }
+    .remove-orders {
+        background-color: #1e8fffba;
+    }
+
+    .go-home, .thank {
+        color: black;
+    }
 }
